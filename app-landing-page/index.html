@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>App Landing Page - example layout with GSS</title>
+
+  <style type="text/css">
+    * {
+      box-sizing: border-box;
+    }
+
+    body, html{
+      margin: 0;
+      padding: 0;
+      font-family: helvetica, arial, sans-serif;
+    }
+
+    h1, h2{
+      margin: 0;
+    }
+
+    .header{
+      background: url(background.jpg) center bottom no-repeat;
+      background-size: cover;
+    }
+
+    .header * {
+      color: #fff;
+    }
+
+    .main {
+      background: #E5EBF2;
+      color: #282F3C;
+    }
+
+    .title{
+      text-align: center;
+      font-weight: lighter;
+      line-height: 1.4;
+      outline: 1px solid red;
+    }
+
+    .caption{
+      background: rgba(0, 0, 0, 0.6);
+      padding: 1.5em;
+    }
+
+    .lead{
+      font-weight: lighter;
+      font-size: 1.3em;
+      text-align: center;
+      outline: 1px solid red;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 1.5em 3em;
+      color: #fff;
+      background: rgba(0, 0, 0, 0.3);
+      text-align: center;
+    }
+
+    .product{
+      outline: 1px solid lime;
+    }
+
+    .product img{
+      width: 100%;
+      max-width: 300px;
+    }
+
+  </style>
+
+  <style type="text/gss">
+
+    $w == ::window[width];
+    $h == ::window[height];
+
+    .main, .header {
+      width: == ::window[width] / 2;
+      height: == ::window[height];
+
+      @if (::window[width] < 768){
+        width: == ::window[width];
+        height: == ::window[height] / 2;
+      }
+    }
+
+    @if (::window[width] < 768){
+      @h |(.header)| in(::window);
+      @h |(.main)| in(::window);
+      @v |(.header)(.main)| in(::window);
+    } @else {
+      @h |(.header)(.main)| in(::window);
+    }
+
+    /** logo **/
+    .logo[width] == 200;
+    .logo[height] == .logo[intrinsic-height];
+    .header[center-x] == .logo[center-x];
+
+    /** title **/
+    .title[center] == .header[center];
+    .title[width] == .header[width] / 2;
+    .title[height] == .title[intrinsic-height];
+
+    /** caption **/
+    .caption[height] == .caption[intrinsic-height];
+    .header[width] == .caption[width];
+
+    @v |-64-(.logo)~(.title)~(.caption)| in(.header) gap(0) outer-gap(0);
+
+    /** download button **/
+    .download[width] == 200;
+    .download[height] == .download[intrinsic-height];
+    .download[center-x] == .main[center-x];
+
+    /** lead **/
+    .lead[width] == .main[width] / 2;
+    .lead[width] >= 350 !require;
+    .lead[width] <= 450 !strong;
+    .lead[height] == .lead[intrinsic-height];
+    .lead[center-x] == .main[center-x];
+
+    /** device **/
+    .product[height] == .product[intrinsic-height];
+    .product[width] == .main[width] / 3;
+    .product[width] >= 250;
+
+    @v |-64-(.download)-64-(.lead)-16-(.product)~| in(.main) gap(0);
+    @h |-(.product)-| in(.main);
+
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <a href="#" class="button logo">Logo</a>
+    <h1 class="title">Headline goes here and always stays centered</h1>
+    <div class="caption">Photo caption goes here</div>
+  </header>
+
+  <section class="main">
+    <a href="#" class="button download">Download</a>
+    <h2 class="lead">An news experience like no other: <br>Visual, effortless, fast and smart.</h2>
+    <a href="#" class="product">
+      <img src="iphone.png" alt="product photo" />
+    </a>
+  </section>
+
+  <script src="gss.min.js"></script>
+  <script type="text/javascript">
+    window.engine = new GSS(document);
+  </script>
+</body>
+</html>
