@@ -1,0 +1,135 @@
+html,
+body{
+  margin: 0;
+  padding: 0;
+}
+
+/* hide content before GSS has run to avoind Flash of Unstyled Content */
+html::before{
+  transition: opacity 0.2s;
+  content: " ";
+  height: 100%;
+  width: 100%;
+  background: white;
+  opacity: 0;
+  position: fixed;
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* show GSS layout; */
+/* TODO: there should be a timer (animation-delay?) and a fallback CSS-only layout */
+html:not(.gss-ready)::before{
+  opacity: 1;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+p{
+  margin-bottom: 1.5em;
+  font-family: "leitura-news", "Times New Roman", serif;
+  font-size: 1em;
+  font-weight: 400;
+  line-height: 1.5em;
+  color: #282832;
+}
+
+h1, h2, h3, h4, h5{
+  font-family: "maison-neue-for-tgd", Helvetica, Arial, Sans-Serif, sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  font-weight: 600;
+}
+
+img{
+  width: 100%;
+  border: none;
+}
+
+.hero{
+  background: #111;
+}
+
+.hero * {
+  color: #fff;
+}
+
+.hero__img{
+  overflow: hidden;
+  background: url(images/nightbeds-thompson-hero.jpg);
+  background-size: cover;
+  background-position: center;
+  background-color: yellow;
+}
+
+.hero__img img{
+  display: none;
+}
+
+.hero__byline{
+
+}
+
+  .hero__byline p{
+    margin: 2em;
+  }
+
+  .hero__byline p:last-of-type{
+    margin-top: 1em;
+    padding-bottom: 1em;
+    border-bottom: 1px solid white;
+  }
+
+.hero__lead{
+  padding: 2em;
+}
+
+  .hero__lead h1{
+    font-size: 3em;
+    margin: 0;
+  }
+
+  .hero__lead p{
+    padding-top: 1em;
+    padding-bottom: 1em;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+  }
+
+section {
+  margin-top: 1em;
+}
+
+.ad {
+  padding: 2em;
+}
+
+.content p:first-child{
+  margin-top: 2em;
+}
+
+blockquote{
+  font-size: 1.3em;
+  font-weight: 400;
+  margin: 0;
+  padding: 2em;
+}
+
+  blockquote:after,
+  blockquote:before {
+    content: "";
+    display: block;
+    width: 50%;
+    height: 6px;
+    background: rgba(0,0,0,0.1);
+  }
+
+  blockquote:after {
+    margin: 1.5em auto 0;
+  }
+
+  blockquote:before {
+    margin: 0 auto 1.5em;
+  }

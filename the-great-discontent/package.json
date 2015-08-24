@@ -1,0 +1,13 @@
+{
+  "name": "gss-layout",
+  "version": "1.0.0",
+  "description": "Responsive layout using GSS.",
+  "main": "index.js",
+  "scripts": {
+    "start": "http-server . -o -s -p 9292"
+  },
+  "author": "Razvan Caliman <razvan.caliman+dev@gmail.com>",
+  "devDependencies": {
+    "http-server": "^0.8.0"
+  }
+}

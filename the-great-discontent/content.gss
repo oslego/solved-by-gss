@@ -1,0 +1,46 @@
+section[top] == header[bottom];
+
+section[width] == ::window[width];
+section[width] <= 2100;
+section[center-x] == ::window[center-x];
+
+@if section[width] > 990 {
+  section[font-size] >= 17 !require;
+  section[font-size] == ::window[width] / 64;
+
+  .ad[width] == section[width] * 0.25;
+  blockquote[width] == section[width] * 0.25;
+
+  @h |(.ad)~(.content)~(blockquote)| in(section);
+
+} @else {
+
+  .ad[width] == section[width] * 0.5;
+  .ad[height] == (.ad img)[intrinsic-height] + (.ad p)[intrinsic-height];
+  .ad[top] == section[top];
+  .ad[center-x] == section[center-x];
+
+  (.ad img)[center-x] == .ad[center-x];
+  (.ad img)[width] == .ad[width] * 0.5;
+  (.ad p)[top] == .ad[bottom] - (.ad p)[computed-height] / 2;
+
+  @if section[width] > 600 {
+
+    blockquote[width] == section[width] * 0.3;
+
+    @v |(.ad)-(.content)| in(section) gap(64);
+    @v |(.ad)-(blockquote)| in(section)  gap(64);
+    @h |-(.content)~(blockquote)| in(section) outer-gap(32);
+
+  } @else {
+
+    blockquote[width] == section[width];
+    blockquote[padding-top] == 0;
+    .ad[width] == section[width] * 0.8;
+    .content[height] == .content[intrinsic-height];
+
+    @v |(.ad)-64-(.content)-16-(blockquote)| in(section);
+    @h |-(.content)-| in(section) outer-gap(32);
+    
+  }
+}

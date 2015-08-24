@@ -1,0 +1,57 @@
+.hero{
+  left: == ::window[left];
+  bottom: == ::window[bottom];
+  width: == ::window[width];
+  height: == ::window[height] !weak;
+  height:  >= .hero__lead[height] + .hero__byline[height] !strong;
+}
+
+.hero__byline{
+  height: == &intrinsic-height;
+}
+
+.hero__lead{
+  height: == &intrinsic-height;
+}
+
+.hero__img[width] == .hero[width];
+.hero__byline[width] == .hero[width] * 0.25;
+
+@if .hero[width] > 1220 {
+  @h |(.hero__img)(.hero__byline)| in(.hero);
+  @h |(.hero__img)(.hero__lead)| in(.hero);
+  @v |(.hero__byline)~(.hero__lead)| in(.hero);
+  @v |(.hero__img)| in(.hero);
+
+
+} @else {
+
+  (.hero__byline > p)[border] == none;
+
+  @if .hero[width] > 990 {
+    .hero__img[height] == ::window[height] - .hero__lead[height];
+    .hero__lead[padding-left] == 0;
+
+    @v |(.hero__img)(.hero__byline)| in(.hero);
+    @v |(.hero__img)(.hero__lead)| in(.hero);
+    @h |(.hero__byline)(.hero__lead)| in(.hero);
+  } @else {
+
+    @if .hero[width] > 600 {
+      .hero__img[height] == ::window[height] - .hero__lead[height];
+      .hero__byline[width] == .hero[width] * 0.3;
+
+      @v |(.hero__img)(.hero__byline)| in(.hero);
+      @v |(.hero__img)(.hero__lead)| in(.hero);
+      @h |(.hero__lead)(.hero__byline)| in(.hero);
+    } @else {
+      .hero__byline[width] == .hero[width];
+      .hero__img[height] == ::window[height] - .hero__byline[height] - .hero__lead[height];
+
+      @v |(.hero__img)(.hero__byline)(.hero__lead)| in(.hero);
+      @h |(.hero__img)| in(.hero);
+      @h |(.hero__byline)| in(.hero);
+      @h |(.hero__lead)| in(.hero);
+    }
+  }
+}

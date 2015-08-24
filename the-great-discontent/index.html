@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GSS Layout</title>
+
+  <!-- Regular CSS, simple styles, no layout -->
+  <link rel="stylesheet" type="text/css" href="styles-non-layout.css">
+
+  <!-- GSS layout stored in external stylesheets -->
+  <link rel="stylesheet" type="text/gss" href="header.gss">
+  <link rel="stylesheet" type="text/gss" href="content.gss">
+
+</head>
+<body>
+  <article>
+
+  <header class="hero">
+    <div class="hero__img">
+      <img src="images/nightbeds-thompson-hero.jpg" alt="">
+    </div>
+
+    <div class="hero__byline">
+      <p>Interview by Tammi Henevel <br> August 6, 2015</p>
+      <p>Photography by Anthony Supreme</p>
+    </div>
+
+    <div class="hero__lead">
+      <h1>Night Beds</h1>
+      <p>Singer-songwriter Winston Yellen, better known as Night Beds, on becoming a musician on his own terms, the friends and family who helped guide him on his path, and the unexpected new sound of his second album, Ivywild.</p>
+      <ul class="hero__tags">
+        <li>
+          SINGER-SONGWRITER
+        </li>
+        <li>
+          MUSICIAN
+        </li>
+      </ul>
+    </div>
+  </header>
+
+   <section>
+      <aside class="ad">
+        <img src="images/graphic-tgdmag03.jpg" alt="TGD Mag Issue 3">
+        <p>
+          <a href="#">TGD Mag № 3 is out now!</a> This multi-cover issue featuring Iron &amp; Wine, Alison Sudol, Tei Shi, and more is a celebration of possibility. <a href="#">Buy Now</a>
+        </p>
+      </aside>
+
+      <div class="content">
+        <p><strong class="q">Tell us about your path to becoming a musician.</strong> All of my formative years were spent in Colorado Springs: I moved there from the Bay Area when I was 11, right before the pivotal moment of entering the sixth grade. Music wasn’t a big part of my upbringing, but I sang along to Stevie Nicks, Diana Ross, Motown groups like the Four Tops, and gospel music that my mom played in the car. I was in choir in high school, and I bombed a couple talent shows. <em>(laughing)</em> I taught myself how to play instruments by fumbling around with an acoustic guitar and a shitty keyboard, and playing along to albums like Coldplay’s <em>A Rush of Blood to the Head</em>.</p>
+        <p>I didn’t start playing music seriously until college, which was around 2008. I originally went to a small school in Chattanooga, Tennessee, to play soccer, but I fell out of that as a freshman. When I realized that I wasn’t going to have a career in sports, I decided to pursue music full-time. I didn’t think about being a musician professionally; I just wanted to devote myself to becoming better. My skills were pretty marginal at the time, so I started recording crappy songs in my dorm room and went from there.</p>
+      </div>
+
+      <blockquote>
+        <p>“…I do this because I love it. If people like what I make, that’s awesome, but I’d still be doing this whether or not anyone gave a shit.”</p>
+      </blockquote>
+    </section>
+  </article>
+
+  <script src="gss.min.js"></script>
+  <script type="text/javascript">
+    window.engine = new GSS(document);
+  </script>
+</body>
+</html>
